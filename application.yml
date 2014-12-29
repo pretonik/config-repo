@@ -14,7 +14,7 @@ spring:
       server:
         git: 
          #  uri: /Users/pretonik/git/config-server/
-           uri: https://pretonik@bitbucket.org/pretonik/config-repo.git
+           uri: https://github.com/pretonik/config-repo
            basedir: target/config
 security:
    user:
