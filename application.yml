@@ -3,11 +3,29 @@ info:
   author: julio muñoz
   
 eureka:
-#  password: '{cipher}AQBdTe9vjgOqANyfi+Ke5HYmhFJnuvsGJ+8FOqLgdMdFInJkVRzy9XngylNp9KlX2lwPI13jT7ceDjBs9w4B6A15akQTHHP1q9rWwMcLtVCCKGFgvXSgQF+WWIItxBmIDGG4bSgDYZ6XQWl66T84PxjTBygErpmAjn+X2BWdtWtVmjXzpMQMaHGpiyLPoGIQYF4j9ZGpl16Jx79+j6et6LStksrT3WxQuanhZwIkqZ827+2mlUB3kd5ocW7R0vC3JMGVZlGNfqYQwJIhSJ19lrq4gxm/zbGroYonW3QSHTiRlhlvOdovEua/0dCl6+s0iEHYZCBllr7jikEWmS5Px7U2TG8/eQkjR8pUbSN6OE+OI2ZZUCNOT+mi75ZeeN1OtdQ='
+  hostname: localhost
+     
+  #Virtual host name by which the clients identifies this service
+  virtualHostName: ${spring.application.name}
+    
+  leaseRenewalIntervalInSeconds: 10
+  statusPageUrlPath: /admin/info
+  healthCheckUrlPath: /admin/health
+  metadataMap:
+    instanceId: ${spring.application.name}
+  
+   
   password: '{cipher}d61b84775382eacebb954052fe717766bc063fd923aea9d416c979e5cf80df86'
   client:
     serviceUrl:
       defaultZone: http://user:${eureka.password}@localhost:8761/eureka/
+    
+    #Region where eureka is deployed -For AWS specify one of the AWS regions, for other datacenters specify a arbitrary string
+    #indicating the region.This is normally specified as a -D option (eg) -Deureka.region=us-east-1
+    region: default
+    
+    #For eureka clients running in eureka server, it needs to connect to servers in other zones
+    preferSameZone: false
 
 ---
 spring:
