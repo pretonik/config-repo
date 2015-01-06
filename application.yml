@@ -46,6 +46,7 @@ application:
   domain: ${APPLICATION_DOMAIN:cfapps.io}
 endpoints:
   restart: enabled
+  shutdown: enabled
 eureka:
   instance:
     hostname: ${PREFIX:}${spring.application.name}.${application.domain:cfapps.io}
